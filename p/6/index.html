@@ -103,6 +103,56 @@
 <article class="post post-type-normal" itemscope itemtype=http://schema.org/Article>
 <header class=post-header>
 <h1 class=post-title itemprop="name headline">
+<a class=post-title-link href=https://www.etaon.link/2021/11/12/redis-dataPersistent.html itemprop=url>
+Redis data persistent
+</a>
+</h1>
+<div class=post-meta>
+<span class=post-time>
+<i class="fa fa-calendar-o fa-fw"></i>
+<span class=post-meta-item-text>时间：</span>
+<time itemprop=dateCreated datetime=2016-03-22T13:04:35+08:00 content="2021-11-12">
+2021-11-12
+</time>
+</span>
+<span class=post-category>
+&nbsp; | &nbsp;
+<i class="fa fa-folder-o fa-fw"></i>
+<span class=post-meta-item-text>分类：</span>
+<span itemprop=about itemscope itemtype=https://schema.org/Thing>
+<a href=/categories/redis itemprop=url rel=index style=text-decoration:underline>
+<span itemprop=name>redis</span>
+</a>
+&nbsp;
+</span>
+</span>
+<span>
+|
+<i class="fa fa-file-word-o fa-fw"></i>
+<span class=post-meta-item-text>字数：</span>
+<span class=leancloud-world-count>2813 字</span>
+</span>
+<span>
+|
+<i class="fa fa-eye fa-fw"></i>
+<span class=post-meta-item-text>阅读：</span>
+<span class=leancloud-view-count>6分钟</span>
+</span>
+</div>
+</header>
+<div class=post-body itemprop=articleBody>
+概念 利用永久性存储介质将数据进行保存，在特定的时间将保存的数据进行恢复的工作机制称为持久化。 两种方法： RDB和AOF： RDB-将当前数据状态
+</div>
+<div class="post-more-link text-center">
+<a class=btn href=https://www.etaon.link/2021/11/12/redis-dataPersistent.html rel=contents>
+阅读全文 &#187;
+</a>
+</div>
+<footer class=post-footer><div class=post-eof></div></footer>
+</article>
+<article class="post post-type-normal" itemscope itemtype=http://schema.org/Article>
+<header class=post-header>
+<h1 class=post-title itemprop="name headline">
 <a class=post-title-link href=https://www.etaon.link/2021/11/10/redis-install.html itemprop=url>
 Redis Install
 </a>
@@ -300,56 +350,6 @@ AWS-案例分析01
 </div>
 <footer class=post-footer><div class=post-eof></div></footer>
 </article>
-<article class="post post-type-normal" itemscope itemtype=http://schema.org/Article>
-<header class=post-header>
-<h1 class=post-title itemprop="name headline">
-<a class=post-title-link href=https://www.etaon.link/2021/09/28/awsvpc.html itemprop=url>
-AWS-VPC
-</a>
-</h1>
-<div class=post-meta>
-<span class=post-time>
-<i class="fa fa-calendar-o fa-fw"></i>
-<span class=post-meta-item-text>时间：</span>
-<time itemprop=dateCreated datetime=2016-03-22T13:04:35+08:00 content="2021-09-28">
-2021-09-28
-</time>
-</span>
-<span class=post-category>
-&nbsp; | &nbsp;
-<i class="fa fa-folder-o fa-fw"></i>
-<span class=post-meta-item-text>分类：</span>
-<span itemprop=about itemscope itemtype=https://schema.org/Thing>
-<a href=/categories/aws itemprop=url rel=index style=text-decoration:underline>
-<span itemprop=name>AWS</span>
-</a>
-&nbsp;
-</span>
-</span>
-<span>
-|
-<i class="fa fa-file-word-o fa-fw"></i>
-<span class=post-meta-item-text>字数：</span>
-<span class=leancloud-world-count>7081 字</span>
-</span>
-<span>
-|
-<i class="fa fa-eye fa-fw"></i>
-<span class=post-meta-item-text>阅读：</span>
-<span class=leancloud-view-count>15分钟</span>
-</span>
-</div>
-</header>
-<div class=post-body itemprop=articleBody>
-Amazon Virtual Private Cloud 文档 VPC允许我们在基础设施中提供一个逻辑上隔离的部分，在这里我们可以在我们定义的虚拟网络中启动AWS资源。我们完全控制： 虚拟网络环
-</div>
-<div class="post-more-link text-center">
-<a class=btn href=https://www.etaon.link/2021/09/28/awsvpc.html rel=contents>
-阅读全文 &#187;
-</a>
-</div>
-<footer class=post-footer><div class=post-eof></div></footer>
-</article>
 </section>
 <nav class=pagination>
 <a class="extend prev" rel=prev href=/p/5/><i class="fa fa-angle-left"></i></a>
@@ -386,7 +386,7 @@ Kepp Going!
 <nav class="site-state motion-element">
 <div class="site-state-item site-state-posts">
 <a href=/post/>
-<span class=site-state-item-count>47</span>
+<span class=site-state-item-count>48</span>
 <span class=site-state-item-name>日志</span>
 </a>
 </div>
@@ -398,7 +398,7 @@ Kepp Going!
 </div>
 <div class="site-state-item site-state-tags">
 <a href=/tags/>
-<span class=site-state-item-count>28</span>
+<span class=site-state-item-count>25</span>
 <span class=site-state-item-name>标签</span>
 </a>
 </div>
@@ -453,6 +453,9 @@ CSDN
 <a href=/tags/mysql>Mysql</a>
 </li>
 <li class=tagcloud-of-blogroll-item>
+<a href=/tags/aws>Aws</a>
+</li>
+<li class=tagcloud-of-blogroll-item>
 <a href=/tags/dql>Dql</a>
 </li>
 <li class=tagcloud-of-blogroll-item>
@@ -469,9 +472,6 @@ CSDN
 </li>
 <li class=tagcloud-of-blogroll-item>
 <a href=/tags/mongodb>Mongodb</a>
-</li>
-<li class=tagcloud-of-blogroll-item>
-<a href=/tags/aws>Aws</a>
 </li>
 <li class=tagcloud-of-blogroll-item>
 <a href=/tags/azure>Azure</a>
