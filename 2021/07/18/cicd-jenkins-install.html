@@ -114,193 +114,170 @@ CICD-Jenkins安装
 然后官网给出了简单安装步骤
 <img src="https://img-blog.csdnimg.cn/20210718221710201.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzM5NDcyNA==,size_16,color_FFFFFF,t_70" alt=在这里插入图片描述></p>
 <h2 id=安装>安装</h2>
-<blockquote>
-<p>[root@jenkins ~]# <strong>sudo wget -O /etc/yum.repos.d/jenkins.repo <a href=https://pkg.jenkins.io/redhat-stable/jenkins.repo>https://pkg.jenkins.io/redhat-stable/jenkins.repo</a></strong>
-&ndash;2021-07-18 06:52:20&ndash; <a href=https://pkg.jenkins.io/redhat-stable/jenkins.repo>https://pkg.jenkins.io/redhat-stable/jenkins.repo</a>
-Resolving pkg.jenkins.io (pkg.jenkins.io)&mldr; 151.101.206.133, 2a04:4e42:30::645
-Connecting to pkg.jenkins.io (pkg.jenkins.io)|151.101.206.133|:443&mldr; connected.
-HTTP request sent, awaiting response&mldr; 200 OK
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>[root@jenkins ~]#  **sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo**
+--2021-07-18 06:52:20--  https://pkg.jenkins.io/redhat-stable/jenkins.repo
+Resolving pkg.jenkins.io (pkg.jenkins.io)... 151.101.206.133, 2a04:4e42:30::645
+Connecting to pkg.jenkins.io (pkg.jenkins.io)|151.101.206.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
 Length: 85
 Saving to: ‘/etc/yum.repos.d/jenkins.repo’
-/etc/yum.repos.d/jenkins.repo 100%[=====================================================>] 85 &ndash;.-KB/s in 0s
-2021-07-18 06:52:20 (2.72 MB/s) - ‘/etc/yum.repos.d/jenkins.repo’ saved [85/85]</p>
-</blockquote>
-<blockquote>
-<p>[root@jenkins ~]# <strong>sudo rpm &ndash;import <a href=https://pkg.jenkins.io/redhat-stable/jenkins.io.key>https://pkg.jenkins.io/redhat-stable/jenkins.io.key</a></strong>
-[root@jenkins ~]# <strong>yum install -y jenkins</strong>
-CentOS Linux 8 - AppStream 7.1 MB/s | 8.1 MB 00:01
-CentOS Linux 8 - BaseOS 3.0 MB/s | 3.6 MB 00:01
-CentOS Linux 8 - Extras 12 kB/s | 9.8 kB 00:00
-Jenkins-stable 18 kB/s | 21 kB 00:01
+/etc/yum.repos.d/jenkins.repo   100%[=====================================================&gt;]      85  --.-KB/s    in 0s
+2021-07-18 06:52:20 (2.72 MB/s) - ‘/etc/yum.repos.d/jenkins.repo’ saved [85/85]
+
+[root@jenkins ~]# **sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key**
+[root@jenkins ~]# **yum install -y jenkins**
+CentOS Linux 8 - AppStream                                                                    7.1 MB/s | 8.1 MB     00:01
+CentOS Linux 8 - BaseOS                                                                       3.0 MB/s | 3.6 MB     00:01
+CentOS Linux 8 - Extras                                                                        12 kB/s | 9.8 kB     00:00
+Jenkins-stable                                                                                 18 kB/s |  21 kB     00:01
 Dependencies resolved.
 ==============================================================================================================================
-Package Architecture Version Repository Size
+ Package                      Architecture                Version                          Repository                    Size
 ==============================================================================================================================
 Installing:
-jenkins noarch 2.289.2-1.1 jenkins 71 M
+ jenkins                      noarch                      2.289.2-1.1                      jenkins                       71 M
 Transaction Summary
 ==============================================================================================================================
-Install 1 Package
+Install  1 Package
 Total download size: 71 M
 Installed size: 71 M
 Downloading Packages:
-jenkins-2.289.2-1.1.noarch.rpm 14 MB/s | 71 MB 00:05</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>Total 14 MB/s | 71 MB 00:05
+jenkins-2.289.2-1.1.noarch.rpm                                                                 14 MB/s |  71 MB     00:05
+------------------------------------------------------------------------------------------------------------------------------
+Total                                                                                          14 MB/s |  71 MB     00:05
 Running transaction check
 Transaction check succeeded.
 Running transaction test
 Transaction test succeeded.
 Running transaction
-Preparing : 1/1
-Running scriptlet: jenkins-2.289.2-1.1.noarch 1/1
-Installing : jenkins-2.289.2-1.1.noarch 1/1
-Running scriptlet: jenkins-2.289.2-1.1.noarch 1/1
-Verifying : jenkins-2.289.2-1.1.noarch 1/1
+  Preparing        :                                                                                                      1/1
+  Running scriptlet: jenkins-2.289.2-1.1.noarch                                                                           1/1
+  Installing       : jenkins-2.289.2-1.1.noarch                                                                           1/1
+  Running scriptlet: jenkins-2.289.2-1.1.noarch                                                                           1/1
+  Verifying        : jenkins-2.289.2-1.1.noarch                                                                           1/1
 Installed products updated.
 Installed:
-jenkins-2.289.2-1.1.noarch
-Complete!</p>
-</blockquote>
-<h3 id=jenkins安装包内容>jenkins安装包内容</h3>
-<blockquote>
-<p>[root@jenkins ~]# rpm -ql jenkins
-<strong>/etc/init.d/jenkins # 启动文件</strong>
-/etc/logrotate.d/jenkins # 日志分割配置文件
-<strong>/etc/sysconfig/jenkins # jenkins主配置文件</strong>
-/usr/lib/jenkins # 存放war包目录
-/usr/lib/jenkins/jenkins.war # war 包
-/usr/sbin/rcjenkins # 命令
-/var/cache/jenkins # war包解压目录 jenkins网页代码目录
-<strong>/var/lib/jenkins # jenkins 工作目录</strong>
-/var/log/jenkins # 日志</p>
-</blockquote>
-<h3 id=主配置文件>主配置文件</h3>
-<blockquote>
-<p><strong>JENKINS_HOME="/var/lib/jenkins" # jenkins工作目录</strong>
-JENKINS_JAVA_CMD=""
-<strong>JENKINS_USER=&ldquo;jenkins&rdquo; # jenkinx启动用户</strong>
-JENKINS_JAVA_OPTIONS="-Djava.awt.headless=true"
-<strong>JENKINS_PORT=&ldquo;8080&rdquo; # 端口</strong>
-JENKINS_LISTEN_ADDRESS=""
-JENKINS_HTTPS_PORT=""
-JENKINS_HTTPS_KEYSTORE=""
-JENKINS_HTTPS_KEYSTORE_PASSWORD=""
-JENKINS_HTTPS_LISTEN_ADDRESS=""
-JENKINS_DEBUG_LEVEL=&ldquo;5&rdquo;
-JENKINS_ENABLE_ACCESS_LOG=&ldquo;no&rdquo;
-<strong>JENKINS_HANDLER_MAX=&ldquo;100&rdquo; # 最大连接，根据服务器能力可以修改</strong>
-JENKINS_HANDLER_IDLE=&ldquo;20&rdquo;
-JENKINS_ARGS=""</p>
-</blockquote>
-<h3 id=java依赖>Java依赖</h3>
-<blockquote>
-<p>[root@jenkins ~]# systemctl status jenkins.service
+  jenkins-2.289.2-1.1.noarch
+Complete!
+</code></pre></div><h3 id=jenkins安装包内容>jenkins安装包内容</h3>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>[root@jenkins ~]# rpm -ql jenkins
+**/etc/init.d/jenkins         # 启动文件**
+/etc/logrotate.d/jenkins    # 日志分割配置文件
+**/etc/sysconfig/jenkins      # jenkins主配置文件**
+/usr/lib/jenkins            # 存放war包目录
+/usr/lib/jenkins/jenkins.war   # war 包
+/usr/sbin/rcjenkins         # 命令
+/var/cache/jenkins          # war包解压目录 jenkins网页代码目录
+**/var/lib/jenkins            # jenkins 工作目录**
+/var/log/jenkins            # 日志
+</code></pre></div><h3 id=主配置文件>主配置文件</h3>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#080>**JENKINS_HOME=&#34;/var/lib/jenkins&#34;</span><span style=color:#bbb>    </span><span style=color:#080;font-style:italic># jenkins工作目录**</span><span style=color:#bbb>
+</span><span style=color:#bbb></span>JENKINS_JAVA_CMD=&#34;&#34;<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:#080>**JENKINS_USER=&#34;jenkins&#34;</span><span style=color:#bbb>             </span><span style=color:#080;font-style:italic># jenkinx启动用户**</span><span style=color:#bbb>
+</span><span style=color:#bbb></span>JENKINS_JAVA_OPTIONS=&#34;-Djava.awt.headless=true&#34;<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:#080>**JENKINS_PORT=&#34;8080&#34;</span><span style=color:#bbb>                </span><span style=color:#080;font-style:italic># 端口**</span><span style=color:#bbb>
+</span><span style=color:#bbb></span>JENKINS_LISTEN_ADDRESS=&#34;&#34;<span style=color:#bbb>
+</span><span style=color:#bbb></span>JENKINS_HTTPS_PORT=&#34;&#34;<span style=color:#bbb>
+</span><span style=color:#bbb></span>JENKINS_HTTPS_KEYSTORE=&#34;&#34;<span style=color:#bbb>
+</span><span style=color:#bbb></span>JENKINS_HTTPS_KEYSTORE_PASSWORD=&#34;&#34;<span style=color:#bbb>
+</span><span style=color:#bbb></span>JENKINS_HTTPS_LISTEN_ADDRESS=&#34;&#34;<span style=color:#bbb>
+</span><span style=color:#bbb></span>JENKINS_DEBUG_LEVEL=&#34;5&#34;<span style=color:#bbb>
+</span><span style=color:#bbb></span>JENKINS_ENABLE_ACCESS_LOG=&#34;no&#34;<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:#080>**JENKINS_HANDLER_MAX=&#34;100&#34;</span><span style=color:#bbb>          </span><span style=color:#080;font-style:italic># 最大连接，根据服务器能力可以修改**</span><span style=color:#bbb>
+</span><span style=color:#bbb></span>JENKINS_HANDLER_IDLE=&#34;20&#34;<span style=color:#bbb>
+</span><span style=color:#bbb></span>JENKINS_ARGS=&#34;&#34;<span style=color:#bbb>
+</span></code></pre></div><h3 id=java依赖>Java依赖</h3>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>[root@jenkins ~]# systemctl status jenkins.service
 ● jenkins.service - LSB: Jenkins Automation Server
-Loaded: loaded (/etc/rc.d/init.d/jenkins; generated)
-Active: inactive (dead)
-Docs: man:systemd-sysv-generator(8)
-[root@jenkins ~]# <strong>systemctl start jenkins.service</strong>
+   Loaded: loaded (/etc/rc.d/init.d/jenkins; generated)
+   Active: inactive (dead)
+     Docs: man:systemd-sysv-generator(8)
+[root@jenkins ~]# **systemctl start jenkins.service**
 Job for jenkins.service failed because the control process exited with error code.
-See &ldquo;systemctl status jenkins.service&rdquo; and &ldquo;journalctl -xe&rdquo; for details.</p>
-</blockquote>
-<p>发现无法启动jenkins，这是因为java没有安装</p>
-<blockquote>
-<p>[root@jenkins ~]# java -version
-bash: java: command not found&mldr;
+See &#34;systemctl status jenkins.service&#34; and &#34;journalctl -xe&#34; for details.
+</code></pre></div><p>发现无法启动jenkins，这是因为java没有安装</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>[root@jenkins ~]# java -version
+bash: java: command not found...
 [root@jenkins ~]# yum install -y java
 Last metadata expiration check: 0:04:48 ago on Sun 18 Jul 2021 06:52:50 AM PDT.
 Dependencies resolved.
 ==============================================================================================================================
-Package Architecture Version Repository Size
+ Package                              Architecture    Version                                        Repository          Size
 ==============================================================================================================================
 Installing:
-java-1.8.0-openjdk x86_64 1:1.8.0.292.b10-1.el8_4 appstream 335 k
+ java-1.8.0-openjdk                   x86_64          1:1.8.0.292.b10-1.el8_4                        appstream          335 k
 Installing dependencies:
-copy-jdk-configs noarch 3.7-4.el8 appstream 27 k
-java-1.8.0-openjdk-headless x86_64 1:1.8.0.292.b10-1.el8_4 appstream 34 M
-javapackages-filesystem noarch 5.3.0-1.module_el8.0.0+11+5b8c10bd appstream 30 k
-lksctp-tools x86_64 1.0.18-3.el8 baseos 100 k
-ttmkfdir x86_64 3.0.9-54.el8 appstream 62 k
-tzdata-java noarch 2021a-1.el8 appstream 192 k
-xorg-x11-fonts-Type1 noarch 7.5-19.el8 appstream 522 k
+ copy-jdk-configs                     noarch          3.7-4.el8                                      appstream           27 k
+ java-1.8.0-openjdk-headless          x86_64          1:1.8.0.292.b10-1.el8_4                        appstream           34 M
+ javapackages-filesystem              noarch          5.3.0-1.module_el8.0.0+11+5b8c10bd             appstream           30 k
+ lksctp-tools                         x86_64          1.0.18-3.el8                                   baseos             100 k
+ ttmkfdir                             x86_64          3.0.9-54.el8                                   appstream           62 k
+ tzdata-java                          noarch          2021a-1.el8                                    appstream          192 k
+ xorg-x11-fonts-Type1                 noarch          7.5-19.el8                                     appstream          522 k
 Enabling module streams:
-javapackages-runtime 201801
+ javapackages-runtime                                 201801
 Transaction Summary
 ==============================================================================================================================
-Install 8 Packages
+Install  8 Packages
 Total download size: 35 M
 Installed size: 119 M
 Downloading Packages:
-(1/8): copy-jdk-configs-3.7-4.el8.noarch.rpm 171 kB/s | 27 kB 00:00
-(2/8): javapackages-filesystem-5.3.0-1.module_el8.0.0+11+5b8c10bd.noarch.rpm 303 kB/s | 30 kB 00:00
-(3/8): java-1.8.0-openjdk-1.8.0.292.b10-1.el8_4.x86_64.rpm 1.0 MB/s | 335 kB 00:00
-(4/8): ttmkfdir-3.0.9-54.el8.x86_64.rpm 589 kB/s | 62 kB 00:00
-(5/8): tzdata-java-2021a-1.el8.noarch.rpm 3.3 MB/s | 192 kB 00:00
-(6/8): xorg-x11-fonts-Type1-7.5-19.el8.noarch.rpm 3.1 MB/s | 522 kB 00:00
-(7/8): lksctp-tools-1.0.18-3.el8.x86_64.rpm 205 kB/s | 100 kB 00:00
-(8/8): java-1.8.0-openjdk-headless-1.8.0.292.b10-1.el8_4.x86_64.rpm 25 MB/s | 34 MB 00:01
-&mldr;&mldr;
+(1/8): copy-jdk-configs-3.7-4.el8.noarch.rpm                                                  171 kB/s |  27 kB     00:00
+(2/8): javapackages-filesystem-5.3.0-1.module_el8.0.0+11+5b8c10bd.noarch.rpm                  303 kB/s |  30 kB     00:00
+(3/8): java-1.8.0-openjdk-1.8.0.292.b10-1.el8_4.x86_64.rpm                                    1.0 MB/s | 335 kB     00:00
+(4/8): ttmkfdir-3.0.9-54.el8.x86_64.rpm                                                       589 kB/s |  62 kB     00:00
+(5/8): tzdata-java-2021a-1.el8.noarch.rpm                                                     3.3 MB/s | 192 kB     00:00
+(6/8): xorg-x11-fonts-Type1-7.5-19.el8.noarch.rpm                                             3.1 MB/s | 522 kB     00:00
+(7/8): lksctp-tools-1.0.18-3.el8.x86_64.rpm                                                   205 kB/s | 100 kB     00:00
+(8/8): java-1.8.0-openjdk-headless-1.8.0.292.b10-1.el8_4.x86_64.rpm                            25 MB/s |  34 MB     00:01
+......
 Installed:
-copy-jdk-configs-3.7-4.el8.noarch
-java-1.8.0-openjdk-1:1.8.0.292.b10-1.el8_4.x86_64
-java-1.8.0-openjdk-headless-1:1.8.0.292.b10-1.el8_4.x86_64
-javapackages-filesystem-5.3.0-1.module_el8.0.0+11+5b8c10bd.noarch
-lksctp-tools-1.0.18-3.el8.x86_64
-ttmkfdir-3.0.9-54.el8.x86_64
-tzdata-java-2021a-1.el8.noarch
-xorg-x11-fonts-Type1-7.5-19.el8.noarch
-Complete!</p>
-</blockquote>
-<p>查看java</p>
-<blockquote>
-<p>[root@jenkins ~]# java -version
-openjdk version &ldquo;1.8.0_292&rdquo;
+  copy-jdk-configs-3.7-4.el8.noarch
+  java-1.8.0-openjdk-1:1.8.0.292.b10-1.el8_4.x86_64
+  java-1.8.0-openjdk-headless-1:1.8.0.292.b10-1.el8_4.x86_64
+  javapackages-filesystem-5.3.0-1.module_el8.0.0+11+5b8c10bd.noarch
+  lksctp-tools-1.0.18-3.el8.x86_64
+  ttmkfdir-3.0.9-54.el8.x86_64
+  tzdata-java-2021a-1.el8.noarch
+  xorg-x11-fonts-Type1-7.5-19.el8.noarch
+Complete!
+</code></pre></div><p>查看java</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>[root@jenkins ~]# java -version
+openjdk version &#34;1.8.0_292&#34;
 OpenJDK Runtime Environment (build 1.8.0_292-b10)
 OpenJDK 64-Bit Server VM (build 25.292-b10, mixed mode)
 [root@jenkins ~]# ll /usr/bin/java
-lrwxrwxrwx. 1 root root 22 Jul 18 06:57 /usr/bin/java -> /etc/alternatives/java</p>
-</blockquote>
-<h3 id=启动jenkins>启动jenkins</h3>
-<blockquote>
-<p>[root@jenkins ~]# <strong>systemctl start jenkins.service</strong>
-[root@jenkins ~]# <strong>systemctl status jenkins.service</strong>
+lrwxrwxrwx. 1 root root 22 Jul 18 06:57 /usr/bin/java -&gt; /etc/alternatives/java
+</code></pre></div><h3 id=启动jenkins>启动jenkins</h3>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>[root@jenkins ~]# **systemctl start jenkins.service**
+[root@jenkins ~]# **systemctl status jenkins.service**
 ● jenkins.service - LSB: Jenkins Automation Server
-Loaded: loaded (/etc/rc.d/init.d/jenkins; generated)
-Active: active (running) since Sun 2021-07-18 07:02:26 PDT; 12s ago
-Docs: man:systemd-sysv-generator(8)
-Process: 33481 ExecStart=/etc/rc.d/init.d/jenkins start (code=exited, status=0/SUCCESS)
-Tasks: 42 (limit: 23360)
-Memory: 389.7M
-CGroup: /system.slice/jenkins.service
-└─33504 /etc/alternatives/java -Dcom.sun.akuma.Daemon=daemonized -Djava.awt.headless=true -DJENKINS_HOME=/var/lib/>
-Jul 18 07:02:24 jenkins systemd[1]: Starting LSB: Jenkins Automation Server&mldr;
+   Loaded: loaded (/etc/rc.d/init.d/jenkins; generated)
+   Active: active (running) since Sun 2021-07-18 07:02:26 PDT; 12s ago
+     Docs: man:systemd-sysv-generator(8)
+  Process: 33481 ExecStart=/etc/rc.d/init.d/jenkins start (code=exited, status=0/SUCCESS)
+    Tasks: 42 (limit: 23360)
+   Memory: 389.7M
+   CGroup: /system.slice/jenkins.service
+           └─33504 /etc/alternatives/java -Dcom.sun.akuma.Daemon=daemonized -Djava.awt.headless=true -DJENKINS_HOME=/var/lib/&gt;
+Jul 18 07:02:24 jenkins systemd[1]: Starting LSB: Jenkins Automation Server...
 Jul 18 07:02:24 jenkins runuser[33488]: pam_unix(runuser:session): session opened for user jenkins by (uid=0)
 Jul 18 07:02:26 jenkins runuser[33488]: pam_unix(runuser:session): session closed for user jenkins
-Jul 18 07:02:26 jenkins jenkins[33481]: Starting Jenkins [ OK ]
-Jul 18 07:02:26 jenkins systemd[1]: Started LSB: Jenkins Automation Server.</p>
-</blockquote>
-<h4 id=查看jenkins进程>查看jenkins进程</h4>
-<blockquote>
-<p>[root@jenkins ~]# ps -ef|grep jenkins
-jenkins 33504 1 99 07:02 ? 00:00:44 /etc/alternatives/java -Dcom.sun.akuma.Daemon=daemonized -Djava.awt.headless=true -DJENKINS_HOME=/var/lib/jenkins -jar /usr/lib/jenkins/jenkins.war &ndash;logfile=/var/log/jenkins/jenkins.log &ndash;webroot=/var/cache/jenkins/war &ndash;daemon &ndash;httpPort=8080 &ndash;debug=5 &ndash;handlerCountMax=100 &ndash;handlerCountMaxIdle=20
-root 33588 3469 0 07:03 pts/0 00:00:00 grep &ndash;color=auto jenkins</p>
-</blockquote>
-<h4 id=查看8080端口>查看8080端口</h4>
-<blockquote>
-<p>[root@jenkins ~]# lsof -i:8080
-COMMAND PID USER FD TYPE DEVICE SIZE/OFF NODE NAME
-java 33504 jenkins 25u IPv6 92503 0t0 TCP *:webcache (LISTEN)</p>
-</blockquote>
-<h4 id=在客户端打开jenkins>在客户端打开jenkins</h4>
+Jul 18 07:02:26 jenkins jenkins[33481]: Starting Jenkins [  OK  ]
+Jul 18 07:02:26 jenkins systemd[1]: Started LSB: Jenkins Automation Server.
+</code></pre></div><h4 id=查看jenkins进程>查看jenkins进程</h4>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>[root@jenkins ~]# ps -ef|grep jenkins
+jenkins    33504       1 99 07:02 ?        00:00:44 /etc/alternatives/java -Dcom.sun.akuma.Daemon=daemonized -Djava.awt.headless=true -DJENKINS_HOME=/var/lib/jenkins -jar /usr/lib/jenkins/jenkins.war --logfile=/var/log/jenkins/jenkins.log --webroot=/var/cache/jenkins/war --daemon --httpPort=8080 --debug=5 --handlerCountMax=100 --handlerCountMaxIdle=20
+root       33588    3469  0 07:03 pts/0    00:00:00 grep --color=auto jenkins
+</code></pre></div><h4 id=查看8080端口>查看8080端口</h4>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>[root@jenkins ~]# lsof -i:8080
+COMMAND   PID    USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
+java    33504 jenkins   25u  IPv6  92503      0t0  TCP *:webcache (LISTEN)
+</code></pre></div><h4 id=在客户端打开jenkins>在客户端打开jenkins</h4>
 <p><img src="https://img-blog.csdnimg.cn/20210718224553331.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzM5NDcyNA==,size_16,color_FFFFFF,t_70" alt=在这里插入图片描述></p>
-<blockquote>
-<p>[root@jenkins ~]# cat /var/lib/jenkins/secrets/initialAdminPassword
-7ccfb6ff70374891a83cc0d127568a08</p>
-</blockquote>
-<h3 id=jenkins配置>jenkins配置</h3>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>[root@jenkins ~]# cat /var/lib/jenkins/secrets/initialAdminPassword
+7ccfb6ff70374891a83cc0d127568a08
+</code></pre></div><h3 id=jenkins配置>jenkins配置</h3>
 <p>查看到默认密码后，进入到geting started
 <img src="https://img-blog.csdnimg.cn/20210718224756416.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzM5NDcyNA==,size_16,color_FFFFFF,t_70" alt=在这里插入图片描述>
 选择推荐的插件
@@ -324,20 +301,19 @@ java 33504 jenkins 25u IPv6 92503 0t0 TCP *:webcache (LISTEN)</p>
 <img src="https://img-blog.csdnimg.cn/20210718233426856.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzM5NDcyNA==,size_16,color_FFFFFF,t_70" alt=在这里插入图片描述></p>
 <p><img src="https://img-blog.csdnimg.cn/20210718233525421.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzM5NDcyNA==,size_16,color_FFFFFF,t_70" alt=在这里插入图片描述>
 JDK home查找</p>
-<blockquote>
-<p>[root@jenkins local]# which java
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>[root@jenkins local]# which java
 /usr/bin/java
 [root@jenkins local]# ll /usr/bin/java
-lrwxrwxrwx. 1 root root 22 Jul 18 06:57 /usr/bin/java -> /etc/alternatives/java
+lrwxrwxrwx. 1 root root 22 Jul 18 06:57 /usr/bin/java -&gt; /etc/alternatives/java
 [root@jenkins local]# ll /etc/alternatives/java
-lrwxrwxrwx. 1 root root 73 Jul 18 06:57 /etc/alternatives/java -> /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.292.b10-1.el8_4.x86_64/jre/bin/java</p>
-</blockquote>
-<p>JDK home:/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.292.b10-1.el8_4.x86_64</p>
-<p>Path to Git executable</p>
-<blockquote>
-<p>[root@jenkins local]# which git
-/usr/bin/git</p>
-</blockquote>
+lrwxrwxrwx. 1 root root 73 Jul 18 06:57 /etc/alternatives/java -&gt; /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.292.b10-1.el8_4.x86_64/jre/bin/java
+
+JDK home:/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.292.b10-1.el8_4.x86_64
+
+Path to Git executable
+[root@jenkins local]# which git
+/usr/bin/git
+</code></pre></div>
 </div>
 <footer class=post-footer>
 <div id=wcomments></div>
